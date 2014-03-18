@@ -16,3 +16,7 @@ Feature: New Project
   Scenario: create lib directory
     When I run `elk project`
     Then a directory named "project/lib" should exist
+
+  Scenario: create project.rb file in lib directory
+    When I run `elk project`
+    Then a file named "project/lib/project.rb" should exist

@@ -19,5 +19,9 @@ module Elk
         f.write("source 'https://rubygems.org'\n")
       end
     end
+
+    def create_project_rb_file
+      FileUtils.touch("#{name}/lib/#{name}.rb")
+    end
   end
 end
