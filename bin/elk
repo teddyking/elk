@@ -1,0 +1,11 @@
+#!/usr/bin/env ruby
+
+begin
+  require 'elk'
+rescue LoadError
+  $LOAD_PATH.unshift "#{File.dirname(__FILE__)}/../lib/"
+  $LOAD_PATH.unshift "#{File.dirname(__FILE__)}/../lib/elk/"
+  require 'elk'
+end
+
+Elk::Project.new(ARGV[0]).create_top_level_dir
