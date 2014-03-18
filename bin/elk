@@ -8,4 +8,6 @@ rescue LoadError
   require 'elk'
 end
 
-Elk::Project.new(ARGV[0]).create_top_level_dir
+elk_project = Elk::Project.new(ARGV[0])
+elk_project.create_top_level_dir
+elk_project.create_gemfile

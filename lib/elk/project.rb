@@ -13,5 +13,11 @@ module Elk
 
       FileUtils.mkdir_p(name)
     end
+
+    def create_gemfile
+      File.open("#{name}/Gemfile", 'w') do |f|
+        f.write("source 'https://rubygems.org'\n")
+      end
+    end
   end
 end

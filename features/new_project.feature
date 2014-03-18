@@ -7,3 +7,8 @@ Feature: New Project
   Scenario: create top-level directory
     When I run `elk project`
     Then a directory named "project" should exist
+
+  Scenario: create Gemfile
+    When I run `elk project`
+    Then a file named "project/Gemfile" should exist
+    And the file "project/Gemfile" should contain "source 'https://rubygems.org'"
