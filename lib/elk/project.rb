@@ -14,12 +14,20 @@ module Elk
       Elk.create_dir("#{name}/lib")
     end
 
+    def create_lib_project_dir
+      Elk.create_dir("#{name}/lib/#{name}")
+    end
+
     def create_gemfile
       Elk.create_file("#{name}/Gemfile", "source 'https://rubygems.org'\n")
     end
 
     def create_project_rb_file
       Elk.create_file("#{name}/lib/#{name}.rb")
+    end
+
+    def create_gitignore_file
+      Elk.create_file("#{name}/.gitignore")
     end
   end
 end

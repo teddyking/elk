@@ -13,3 +13,5 @@ elk_project.create_top_level_dir
 elk_project.create_gemfile
 elk_project.create_lib_dir
 elk_project.create_project_rb_file
+elk_project.create_lib_project_dir
+elk_project.create_gitignore_file

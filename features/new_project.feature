@@ -4,19 +4,27 @@ Feature: New Project
   I want to be able to create project skeletons automatically
   So I don't have to waste time creating them manually
 
-  Scenario: create top-level directory
+  Scenario: required directories are created
     When I run `elk project`
-    Then a directory named "project" should exist
+    Then the following directories should exist:
+      | project             |
+      | project/lib         |
+      | project/lib/project |
 
-  Scenario: create Gemfile
+  Scenario Outline: empty files are created
     When I run `elk project`
-    Then a file named "project/Gemfile" should exist
-    And the file "project/Gemfile" should contain "source 'https://rubygems.org'"
+    Then a file named "<file>" should exist
 
-  Scenario: create lib directory
-    When I run `elk project`
-    Then a directory named "project/lib" should exist
+    Scenarios:
+      | file |
+      | project/lib/project.rb |
+      | project/.gitignore     |
 
-  Scenario: create project.rb file in lib directory
+  Scenario Outline: files with content are created
     When I run `elk project`
-    Then a file named "project/lib/project.rb" should exist
+    Then a file named "<file>" should exist
+    And the file "<file>" should contain "<content>"
+
+    Scenarios:
+      | file            | content                       |
+      | project/Gemfile | source 'https://rubygems.org' |

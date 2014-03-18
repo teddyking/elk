@@ -47,6 +47,15 @@ describe Elk::Project do
     end
   end
 
+  describe '#create_lib_project_dir' do
+    it 'creates the lib/project directory' do
+      elk_project.create_top_level_dir
+      elk_project.create_lib_project_dir
+
+      expect(File.directory?('project/lib/project')).to eq true
+    end
+  end
+
   describe '#create_project_rb_file' do
     it 'creates a .rb file in the lib directory' do
       elk_project.create_top_level_dir
@@ -54,6 +63,15 @@ describe Elk::Project do
       elk_project.create_project_rb_file
 
       expect(File.exist?('project/lib/project.rb')).to eq true
+    end
+  end
+
+  describe '#create_gitignore_file' do
+    it 'creates a .rb file in the lib directory' do
+      elk_project.create_top_level_dir
+      elk_project.create_gitignore_file
+
+      expect(File.exist?('project/.gitignore')).to eq true
     end
   end
 end
