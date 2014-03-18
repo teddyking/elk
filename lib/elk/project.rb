@@ -1,5 +1,3 @@
-require 'fileutils'
-
 module Elk
   class Project
     attr_reader :name
@@ -9,13 +7,11 @@ module Elk
     end
 
     def create_top_level_dir
-      fail Elk::ProjectDirExistsError if Dir.exist?(name)
-
-      FileUtils.mkdir_p(name)
+      Elk.create_dir(name)
     end
 
     def create_lib_dir
-      FileUtils.mkdir_p("#{name}/lib")
+      Elk.create_dir("#{name}/lib")
     end
 
     def create_gemfile

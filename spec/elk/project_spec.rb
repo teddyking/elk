@@ -17,7 +17,7 @@ describe Elk::Project do
         FileUtils.mkdir_p('project')
 
         expect { elk_project.create_top_level_dir }.to raise_error
-        Elk::ProjectDirExistsError
+        Elk::DirAlreadyExistsError
       end
     end
   end
