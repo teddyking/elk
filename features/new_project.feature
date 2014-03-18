@@ -27,5 +27,6 @@ Feature: New Project
     And the file "<file>" should contain "<content>"
 
     Scenarios:
-      | file            | content                       |
-      | project/Gemfile | source 'https://rubygems.org' |
+      | file                        | content                           |
+      | project/Gemfile             | source 'https://rubygems.org'     |
+      | project/spec/spec_helper.rb | require_relative '../lib/project' |

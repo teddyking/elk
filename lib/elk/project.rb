@@ -34,10 +34,16 @@ module Elk
       create_lib_project_dir
       create_project_rb_file
       create_spec_dir
+      create_spec_helper_file
     end
 
     def create_spec_dir
       Elk.create_dir("#{name}/spec")
+    end
+
+    def create_spec_helper_file
+      Elk.create_file("#{name}/spec/spec_helper.rb",
+                      "require_relative '../lib/#{name}'\n")
     end
 
     def create_top_level_dir

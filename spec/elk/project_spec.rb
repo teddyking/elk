@@ -34,7 +34,16 @@ describe Elk::Project do
 
     it 'sets the Gemfile source to https://rubygems.org' do
       content = File.read('project/Gemfile')
-      content.should =~ %r{^source\s'https://rubygems.org'}
+      content.should eq "source 'https://rubygems.org'\n"
+    end
+  end
+
+  describe '#create_gitignore_file' do
+    it 'creates a .rb file in the lib directory' do
+      elk_project.create_top_level_dir
+      elk_project.create_gitignore_file
+
+      expect(File.exist?('project/.gitignore')).to eq true
     end
   end
 
@@ -44,15 +53,6 @@ describe Elk::Project do
       elk_project.create_lib_dir
 
       expect(File.directory?('project/lib')).to eq true
-    end
-  end
-
-  describe '#create_spec_dir' do
-    it 'creates the spec directory' do
-      elk_project.create_top_level_dir
-      elk_project.create_spec_dir
-
-      expect(File.directory?('project/spec')).to eq true
     end
   end
 
@@ -75,12 +75,29 @@ describe Elk::Project do
     end
   end
 
-  describe '#create_gitignore_file' do
-    it 'creates a .rb file in the lib directory' do
+  describe '#create_spec_dir' do
+    it 'creates the spec directory' do
       elk_project.create_top_level_dir
-      elk_project.create_gitignore_file
+      elk_project.create_spec_dir
 
-      expect(File.exist?('project/.gitignore')).to eq true
+      expect(File.directory?('project/spec')).to eq true
+    end
+  end
+
+  describe '#create_spec_helper_file' do
+    before(:each) do
+      elk_project.create_top_level_dir
+      elk_project.create_spec_dir
+      elk_project.create_spec_helper_file
+    end
+
+    it 'creates a spec_helper.rb file in the spec directory' do
+      expect(File.exist?('project/spec/spec_helper.rb')).to eq true
+    end
+
+    it 'requires the lib/project.rb file' do
+      content = File.read('project/spec/spec_helper.rb')
+      content.should eq "require_relative '../lib/project'\n"
     end
   end
 end
