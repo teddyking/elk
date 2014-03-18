@@ -47,6 +47,15 @@ describe Elk::Project do
     end
   end
 
+  describe '#create_spec_dir' do
+    it 'creates the spec directory' do
+      elk_project.create_top_level_dir
+      elk_project.create_spec_dir
+
+      expect(File.directory?('project/spec')).to eq true
+    end
+  end
+
   describe '#create_lib_project_dir' do
     it 'creates the lib/project directory' do
       elk_project.create_top_level_dir

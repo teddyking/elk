@@ -10,6 +10,7 @@ Feature: New Project
       | project             |
       | project/lib         |
       | project/lib/project |
+      | project/spec        |
 
   Scenario Outline: empty files are created
     When I run `elk project`
