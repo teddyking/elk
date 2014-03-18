@@ -1,6 +1,6 @@
 Feature: New Project
 
-  As a developer
+  As a ruby developer
   I want to be able to create project skeletons automatically
   So I don't have to waste time creating them manually
 
@@ -17,7 +17,7 @@ Feature: New Project
     Then a file named "<file>" should exist
 
     Scenarios:
-      | file |
+      | file                   |
       | project/lib/project.rb |
       | project/.gitignore     |
 
