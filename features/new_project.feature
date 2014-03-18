@@ -12,3 +12,7 @@ Feature: New Project
     When I run `elk project`
     Then a file named "project/Gemfile" should exist
     And the file "project/Gemfile" should contain "source 'https://rubygems.org'"
+
+  Scenario: create lib directory
+    When I run `elk project`
+    Then a directory named "project/lib" should exist

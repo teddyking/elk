@@ -11,3 +11,4 @@ end
 elk_project = Elk::Project.new(ARGV[0])
 elk_project.create_top_level_dir
 elk_project.create_gemfile
+elk_project.create_lib_dir

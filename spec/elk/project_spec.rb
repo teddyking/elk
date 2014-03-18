@@ -37,4 +37,13 @@ describe Elk::Project do
       content.should =~ %r{^source\s'https://rubygems.org'}
     end
   end
+
+  describe '#create_lib_dir' do
+    it 'creates the lib directory' do
+      elk_project.create_top_level_dir
+      elk_project.create_lib_dir
+
+      expect(File.directory?('project/lib')).to eq true
+    end
+  end
 end
