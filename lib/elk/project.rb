@@ -15,13 +15,11 @@ module Elk
     end
 
     def create_gemfile
-      File.open("#{name}/Gemfile", 'w') do |f|
-        f.write("source 'https://rubygems.org'\n")
-      end
+      Elk.create_file("#{name}/Gemfile", "source 'https://rubygems.org'\n")
     end
 
     def create_project_rb_file
-      FileUtils.touch("#{name}/lib/#{name}.rb")
+      Elk.create_file("#{name}/lib/#{name}.rb")
     end
   end
 end
